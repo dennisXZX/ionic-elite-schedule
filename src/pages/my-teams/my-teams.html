@@ -6,13 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>my-teams</ion-title>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Elite schedule</ion-title>
   </ion-navbar>
+
+  <ion-toolbar color="secondary">
+    <ion-title>my-teams</ion-title>
+  </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <p>You are currently not following any team.</p>
+  <p>First select a tournament, then you can follow teams from their team page.</p>
+  <button ion-button (click)="goToTournaments()">Find a Tournament</button>
 </ion-content>

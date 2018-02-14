@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { TournamentsPage } from '../pages';
 
 /**
  * Generated class for the MyTeamsPage page.
@@ -8,7 +9,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-my-teams',
   templateUrl: 'my-teams.html',
@@ -20,6 +20,10 @@ export class MyTeamsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyTeamsPage');
+  }
+
+  goToTournaments() {
+    this.navCtrl.push(TournamentsPage);
   }
 
 }
