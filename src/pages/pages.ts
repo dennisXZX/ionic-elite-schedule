@@ -1,3 +1,4 @@
+// exporting all the pages for easier imports
 export * from './my-teams/my-teams';
 export * from './tournaments/tournaments';
 export * from './game/game';
