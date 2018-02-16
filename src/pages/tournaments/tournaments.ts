@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { MyTeamsPage, TeamsPage } from '../pages';
+import { TeamsPage } from '../pages';
 
 @Component({
   selector: 'page-tournaments',

@@ -11,10 +11,6 @@ export class MyTeamsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MyTeamsPage');
-  }
-
   goToTournaments() {
     this.navCtrl.push(TournamentsPage);
   }

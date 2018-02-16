@@ -8,10 +8,10 @@
 
 
 <ion-content padding>
-  <button ion-item (click)="itemTapped()">
-    HC Elite
-  </button>
-  <button ion-item (click)="itemTapped()">
-    Team Takeover
+  <button
+    ion-item
+    *ngFor="let team of teams"
+    (click)="itemTapped($event, team)">
+    {{ team.name }}
   </button>
 </ion-content>
