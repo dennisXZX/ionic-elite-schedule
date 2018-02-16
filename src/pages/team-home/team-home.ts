@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { StandingsPage, TeamDetailPage } from '../pages';
+import { StandingsPage, TeamDetailPage, MyTeamsPage } from '../pages';
 
 @Component({
   selector: 'page-team-home',
@@ -13,11 +13,11 @@ export class TeamHomePage {
   standingsTab = StandingsPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // use the navParams service to catch the parameter passed from navigation
     this.team = this.navParams.data;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TeamHomePage');
+  goHome() {
+    this.navCtrl.popToRoot();
   }
-
 }
