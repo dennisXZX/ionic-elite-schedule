@@ -12,7 +12,9 @@ export class TeamHomePage {
   teamDetailTab = TeamDetailPage;
   standingsTab = StandingsPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams) {
     // use the navParams service to catch the parameter passed from navigation
     this.team = this.navParams.data;
   }

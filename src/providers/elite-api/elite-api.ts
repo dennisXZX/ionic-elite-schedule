@@ -27,4 +27,8 @@ export class EliteApi {
       })
   }
 
+  getCurrentTournament() {
+    return this.currentTournament;
+  }
+
 }

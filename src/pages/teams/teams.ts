@@ -39,8 +39,6 @@ export class TeamsPage {
           loader.dismiss();
         });
     });
-
-
   }
 
 }
