@@ -74,6 +74,14 @@ export class TeamDetailPage {
     this.navCtrl.parent.parent.push(GamePage, sourceGame);
   }
 
+  getScoreWorL(game) {
+    return game.scoreDisplay ? game.scoreDisplay[0] : '';
+  }
+
+  getScoreDisplayBadgeClass(game) {
+    return game.scoreDisplay.indexOf('W:') === 0 ? 'badge-primary' : 'badge-danger';
+  }
+
   dateChanged() {
     if (this.useDateFilter) {
       this.games = _.filter(this.allGames, (game) => {
