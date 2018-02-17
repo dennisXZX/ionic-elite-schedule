@@ -12,6 +12,7 @@ import { GamePage } from '../pages'
 export class TeamDetailPage {
   games: any[];
   team: any;
+  teamStanding: any;
   private tournamentData: any;
 
   constructor(
@@ -31,6 +32,8 @@ export class TeamDetailPage {
                   // map each game into an object
                   .map((game) => this.getGameObj(game))
                   .value();
+
+    this.teamStanding = _.find(this.tournamentData.standings, { 'teamId': this.team.id });
   }
 
   getGameObj(game) {

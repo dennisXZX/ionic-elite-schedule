@@ -26,11 +26,6 @@ export class TeamsPage {
     this.navCtrl.push(TeamHomePage, team);
   }
 
-  logger(data) {
-    console.log(data);
-    return data;
-  }
-
   ionViewDidLoad() {
     const selectedTournament = this.navParams.data;
 
@@ -45,7 +40,6 @@ export class TeamsPage {
         .subscribe(currentTournament => {
           this.allTeams = currentTournament.teams;
 
-          console.log('all teams', this.allTeams);
           this.allTeamDivisions =
             _.chain(currentTournament.teams)
              .groupBy('division')
