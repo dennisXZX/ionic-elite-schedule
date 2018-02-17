@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { LoadingController, NavController, NavParams } from 'ionic-angular';
 import { TeamsPage } from '../pages';
 import { EliteApi } from '../../providers/providers';
 
@@ -14,6 +14,7 @@ export class TournamentsPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private loadingCtrl: LoadingController,
     private eliteApi: EliteApi) {
   }
 
@@ -22,9 +23,19 @@ export class TournamentsPage {
   }
 
   ionViewDidLoad() {
-    // fetch the tournaments data
-    this.eliteApi.getTournaments().then(data => {
-      this.tournaments = data;
+    // create a loader
+    const loader = this.loadingCtrl.create({
+      content: 'Getting tournaments',
+      spinner: 'circles'
+    });
+
+    loader.present().then(() => {
+      // fetch the tournaments data
+      this.eliteApi.getTournaments().then(data => {
+        this.tournaments = data;
+        // once the data is fetched, dismiss the loader
+        loader.dismiss();
+      });
     });
   }
 

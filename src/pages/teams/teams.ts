@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { LoadingController, NavController, NavParams } from 'ionic-angular';
 import { TeamHomePage } from '../pages';
 import { EliteApi } from '../../providers/providers';
 
@@ -14,6 +14,7 @@ export class TeamsPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private loadingCtrl: LoadingController,
     private eliteApi: EliteApi) {
   }
 
@@ -25,10 +26,21 @@ export class TeamsPage {
   ionViewDidLoad() {
     const selectedTournament = this.navParams.data;
 
-    // fetch the teams data based on the tournament id
-    this.eliteApi.getTournamentData(selectedTournament.id).subscribe(currentTournament => {
-      this.teams = currentTournament.teams;
+    const loader = this.loadingCtrl.create({
+      content: 'Getting tournaments',
+      spinner: 'circles'
     });
+
+    loader.present().then(() => {
+      // fetch the teams data based on the tournament id
+      this.eliteApi.getTournamentData(selectedTournament.id)
+        .subscribe(currentTournament => {
+          this.teams = currentTournament.teams;
+          loader.dismiss();
+        });
+    });
+
+
   }
 
 }
