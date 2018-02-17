@@ -10,7 +10,6 @@ export class TeamDetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.team = this.navParams.data;
-    console.log(this.navParams);
   }
 
 }
