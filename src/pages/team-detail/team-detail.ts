@@ -3,7 +3,7 @@ import { AlertController, NavController, NavParams, ToastController } from 'ioni
 
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { EliteApi } from '../../providers/providers';
+import { EliteApi, UserSettings } from '../../providers/providers';
 import { GamePage } from '../pages'
 
 @Component({
@@ -25,7 +25,8 @@ export class TeamDetailPage {
     public navParams: NavParams,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
-    private eliteApi: EliteApi) {
+    private eliteApi: EliteApi,
+    private userSetting: UserSettings) {
     this.team = this.navParams.data;
   }
 
@@ -42,6 +43,9 @@ export class TeamDetailPage {
 
     this.allGames = this.games;
     this.teamStanding = _.find(this.tournamentData.standings, { 'teamId': this.team.id });
+    this.userSetting.isFavoriteTeam(this.team.id).then(
+      (value) => this.isFollowing = value
+    );
   }
 
   getGameObj(game) {
@@ -107,7 +111,7 @@ export class TeamDetailPage {
             text: 'Yes',
             handler: () => {
               this.isFollowing = false;
-              // TODO persist data
+              this.userSetting.unfavoriteTeam(this.team);
 
               // create a toast message
               const toast = this.toastCtrl.create({
@@ -128,7 +132,11 @@ export class TeamDetailPage {
       confirm.present();
     } else {
       this.isFollowing = true;
-      // TODO persist data
+      this.userSetting.favoriteTeam(
+        this.team,
+        this.tournamentData.tournament.id,
+        this.tournamentData.tournament.name
+      );
     }
   }
 
