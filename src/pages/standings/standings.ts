@@ -26,16 +26,24 @@ export class StandingsPage {
     this.team = this.navParams.data;
   }
 
+  getHeader(record, recordIndex, records) {
+    if (recordIndex === 0 || record.division !== records[recordIndex - 1].division) {
+      return record.division;
+    } else {
+      return null;
+    }
+  }
+
   ionViewDidLoad() {
     const tournamentData = this.eliteApi.getCurrentTournament();
     this.standings = tournamentData.standings;
 
-    this.allStandings =
-      _.chain(this.standings)
-       .groupBy('division')
-       .toPairs()
-       .map(item => _.zipObject(['divisionName', 'divisionStandings'], item))
-       .value();
+    // this.allStandings =
+    //   _.chain(this.standings)
+    //    .groupBy('division')
+    //    .toPairs()
+    //    .map(item => _.zipObject(['divisionName', 'divisionStandings'], item))
+    //    .value();
   }
 
 }
