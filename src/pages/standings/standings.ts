@@ -16,6 +16,7 @@ import * as _ from 'lodash';
 })
 export class StandingsPage {
   allStandings: any[];
+  divisionFilter: string = 'division';
   standings: any[];
   team: any;
 
@@ -34,10 +35,21 @@ export class StandingsPage {
     }
   }
 
+  filterDivision() {
+    if (this.divisionFilter === 'all') {
+      this.standings = this.allStandings;
+    } else {
+      this.standings = _.filter(this.allStandings, s => s.division === this.team.division);
+    }
+  }
+
   ionViewDidLoad() {
     const tournamentData = this.eliteApi.getCurrentTournament();
     this.standings = tournamentData.standings;
 
+    this.allStandings = tournamentData.standings;
+
+    this.filterDivision();
     // this.allStandings =
     //   _.chain(this.standings)
     //    .groupBy('division')
