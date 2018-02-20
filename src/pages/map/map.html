@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Map</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- this creates a google map on the page with the given lat/lng from -->
+  <!-- the component as the initial center of the map: -->
+  <agm-map [latitude]="map.lat" [longitude]="map.lng">
+    <agm-marker [latitude]="map.lat" [longitude]="map.lng"></agm-marker>
+  </agm-map>
+</ion-content>

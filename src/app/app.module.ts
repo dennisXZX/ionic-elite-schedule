@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { AgmCoreModule } from '@agm/core';
 
 import { MyApp } from './app.component';
 import {
@@ -12,7 +13,8 @@ import {
   TeamsPage,
   TeamHomePage,
   TournamentsPage,
-  StandingsPage
+  StandingsPage,
+  MapPage
 } from '../pages/pages';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -29,13 +31,17 @@ import { UserSettings } from '../providers/user-settings/user-settings.service';
     TeamsPage,
     TeamHomePage,
     TournamentsPage,
-    StandingsPage
+    StandingsPage,
+    MapPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDajWPAW2E2oXyivPROE8xcTVOw2OA-zGk'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,7 +52,8 @@ import { UserSettings } from '../providers/user-settings/user-settings.service';
     TeamsPage,
     TeamHomePage,
     TournamentsPage,
-    StandingsPage
+    StandingsPage,
+    MapPage
   ],
   providers: [
     StatusBar,
