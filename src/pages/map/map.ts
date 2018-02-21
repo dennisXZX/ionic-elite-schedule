@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { EliteApi } from '../../providers/elite-api/elite-api.service';
+declare let window: any;
 
 @Component({
   selector: 'page-map',
@@ -22,6 +23,10 @@ export class MapPage {
       lat: location.latitude,
       lng: location.longitude,
     };
+  }
+
+  getDirections(){
+    window.location = `geo:${this.map.lat},${this.map.lng};u=35;`;
   }
 
 }

@@ -8,6 +8,12 @@
 
 
 <ion-content padding>
+  <ion-fab>
+    <button ion-fab class="fab-map" (click)="getDirections()">
+      <ion-icon name="navigate"></ion-icon>
+    </button>
+  </ion-fab>
+
   <!-- this creates a google map on the page with the given lat/lng from -->
   <!-- the component as the initial center of the map: -->
   <agm-map [latitude]="map.lat" [longitude]="map.lng">
